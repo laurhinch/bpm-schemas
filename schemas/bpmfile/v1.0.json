@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BPM Configuration",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the BPM project"
+    },
+    "author": {
+      "type": "string",
+      "description": "The author of the BPM project"
+    },
+    "packs": {
+      "type": "object",
+      "properties": {
+        "bpFolder": {
+          "type": "string",
+          "description": "The location of the behavior pack"
+        },
+        "rpFolder": {
+          "type": "string",
+          "description": "The location of the resource pack"
+        }
+      },
+      "required": [
+        "bpFolder",
+        "rpFolder"
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9_]+$": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL of the dependency",
+              "format": "uri"
+            },
+            "version": {
+              "description": "The version of the dependency. Can be a semver range, a git commit hash, or a git tag",
+              "type": "string"
+            }
+          },
+          "required": [
+            "url",
+            "version"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "name",
+    "author",
+    "packs"
+  ]
+}
