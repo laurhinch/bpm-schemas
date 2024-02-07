@@ -1,0 +1,9 @@
+[package]
+name = "Project name"
+version = "1.0.0"
+description = "A ferrite project"
+authors = ["Author name"]
+bp_folder = "./packs/BP"
+rp_folder = "./packs/RP"
+
+[dependencies]
